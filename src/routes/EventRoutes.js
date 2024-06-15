@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const EventoController = require('../Controllers/EventoController');
-const EventoValidator = require('../Validators/EventoValidator');
+const EventoValidator = require('../Validators/EventValidator');
 const verificarJwt = require('../Middlewares/verificarJwt');
 const verificarAdmin = require('../Middlewares/verificarAdmin');
 

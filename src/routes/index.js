@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const EventoRotas = require('./EventoRoutes');
+const EventoRotas = require('./EventRoutes');
 
 const rotas = Router();
 

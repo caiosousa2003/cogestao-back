@@ -1,4 +1,4 @@
-const EventoModel = require("../Models/EventoModel");
+const EventoModel = require("../Models/EventModel");
 
 class EventoController {
     async create(req, res) {
