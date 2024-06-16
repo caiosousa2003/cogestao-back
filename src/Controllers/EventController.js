@@ -49,7 +49,7 @@ class EventController {
             const foundEvent = await EventModel.findById(id);
             
             if(!foundEvent) 
-                return res.status(404).json({message:"Usuário não encontrado"});
+                return res.status(404).json({message:"Evento não encontrado"});
             
             await foundEvent.deleteOne();
             
