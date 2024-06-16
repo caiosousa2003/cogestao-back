@@ -6,6 +6,4 @@ async function startDB() {
   console.log("Banco de dados inicializado");
 }
 
-startDB();
-
 module.exports = startDB;

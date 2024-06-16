@@ -1,10 +1,10 @@
-const EventoModel = require("../Models/EventModel");
+const EventModel = require("../Models/EventModel");
 
-class EventoController {
+class EventController {
     async create(req, res) {
         try{
-            const Evento = await EventoModel.create(req.body);
-            return res.status(200).json(Evento);
+            const event = await EventModel.create(req.body);
+            return res.status(200).json(event);
 
         }catch(error){
             res.status(500).json({message:"Algo deu errado!", error:error.message });
@@ -14,9 +14,8 @@ class EventoController {
      
     async read(req, res) {
         try{
-            // Aqui você precisa aguardar a resposta da consulta ao banco de dados
-            const Eventos = await EventoModel.find();
-            return res.status(200).json(Eventos);            
+            const events = await EventModel.find();
+            return res.status(200).json(events);            
 
         }catch(error){
             res.status(500).json({message:"Algo deu errado!",error:error.message });
@@ -29,16 +28,13 @@ class EventoController {
         
         try{
             const { id } = req.params;
-            const EventosEncontrado = await EventoModel.findById(id);
-            if(!EventosEncontrado) 
+            const foundEvent = await EventModel.findById(id);
+            if(!foundEvent) 
                 return res.status(404).json({message:"Evento não encontrado"});
             
-            const Evento = await EventosEncontrado.set(req.body).save();
+            const event = await foundEvent.set(req.body).save();
 
-
-            //const Evento = await EventoModel.findByIdAndUpdate(id, req.body, { new: true })
-
-            return res.status(200).json(Evento);            
+            return res.status(200).json(event);            
 
         }catch(error){
             res.status(500).json({message:"Algo deu errado!",error:error.message });
@@ -50,12 +46,12 @@ class EventoController {
     async delete(req, res) {
         try{
             const { id } = req.params;
-            const EventosEncontrado = await EventoModel.findById(id);
+            const foundEvent = await EventModel.findById(id);
             
-            if(!EventosEncontrado) 
+            if(!foundEvent) 
                 return res.status(404).json({message:"Usuário não encontrado"});
             
-            await EventosEncontrado.deleteOne();
+            await foundEvent.deleteOne();
             
             res.status(200).json({"mensagem": "Evento deletado com sucesso" });
 
@@ -67,5 +63,5 @@ class EventoController {
     }
 }
 
-module.exports = new EventoController();
+module.exports = new EventController();
 

@@ -1,14 +1,12 @@
 const { Router } = require('express');
-const EventoController = require('../Controllers/EventoController');
-const EventoValidator = require('../Validators/EventValidator');
-const verificarJwt = require('../Middlewares/verificarJwt');
-const verificarAdmin = require('../Middlewares/verificarAdmin');
+const EventController = require('../Controllers/EventController');
+const EventValidator = require('../Validators/EventValidator');
 
-const EventoRotas = Router();
+const EventRoutes = Router();
 
-EventoRotas.post('/', verificarJwt, verificarAdmin, EventoValidator.create, EventoController.create);
-EventoRotas.get('/', verificarJwt, EventoController.read);
-EventoRotas.delete('/:id', verificarJwt, verificarAdmin, EventoValidator.destroy, EventoController.delete);
-EventoRotas.put('/:id', verificarJwt, verificarAdmin, EventoValidator.update, EventoController.update);
+EventRoutes.post('/', EventValidator.create, EventController.create);
+EventRoutes.get('/', EventController.read);
+EventRoutes.delete('/:id', EventValidator.destroy, EventController.delete);
+EventRoutes.put('/:id', EventValidator.update, EventController.update);
 
-module.exports = EventoRotas;
+module.exports = EventRoutes;
