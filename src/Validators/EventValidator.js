@@ -4,7 +4,7 @@ const { validateRequest } = require("zod-express-middleware");
 
 const create = validateRequest({
     body:z.object({
-        name: z.string({ required_error:"O título é obrigatório"}),
+        title: z.string({ required_error:"O título é obrigatório"}),
         description: z.string({required_error: "A descrição é obrigatória"}),
         category: z.string({required_error: "A categoria é obrigatória"}),
         image: z.string({required_error: "A imagem é obrigatória"}).url("O URL não é válido"),
@@ -20,7 +20,7 @@ const destroy = validateRequest({
 
 const update = validateRequest({
     body: z.object({
-        name: z.string().optional(),
+        title: z.string().optional(),
         description: z.string().optional(),
         category: z.string().optional(),
         image: z.string().url("O URL não é válido").optional(),
