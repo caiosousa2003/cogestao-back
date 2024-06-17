@@ -5,4 +5,4 @@ const startDB = require("./Config/mongodb");
 
 startDB();
 
-app.listen(8000);
+app.listen(process.env.VITE_BACKEND_URL);
