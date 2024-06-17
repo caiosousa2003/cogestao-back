@@ -4,6 +4,6 @@ const EventRotas = require('./EventRoutes');
 
 const routes = Router();
 
-routes.use('/eventos', EventRotas);
+routes.use('/events', EventRotas);
 
 module.exports = routes;
